@@ -1,0 +1,25 @@
+{
+  "name": "eduwork",
+  "version": "1.0.1",
+  "description": "测试package.jsom",
+  "main": "index.js",
+  "scripts": {
+    "test": "ls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git"
+  },
+  "keywords": [
+    "edu",
+    "work",
+    "vue",
+    "react"
+  ],
+  "author": "reno",
+  "license": "MIT",
+  "devDependencies": {
+    "axios": "^0.24.0"
+  },
+  "dependencies": {}
+}

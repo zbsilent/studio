@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <title>Document</title>
+    <style>
+        .basic {
+            font-size: 100px;
+        }
+
+        .happy {
+            background-color: aqua;
+        }
+
+        .unHappy {
+            background-color: greenyellow;
+        }
+        .normal{
+            background-color: brown;
+        }
+        .sad{
+            background-color:black;
+        }
+           
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 适用于动态注定样式 -->
+        <div class="basic" :class="mode" @click="changeMode">{{name}}</div>
+        <!-- <div class="basic" v-bind:class="mode" @click="changeMode">{{name}}</div> -->
+        <hr/>
+        <div class="basic" v-bind:class="classArr">{{name}}</div>
+        <hr/>
+        <div class="basic" :class="classObj" @click="changeMode2">{{name}}</div>
+
+        <hr/>
+        <div class="basic" :style="styleObj">{{name}}</div>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                name: '点击变色',
+                mode:"normal",
+                classArr:['normal','sad','happy'],
+                classObj:{
+                    sad:false,
+                    happy:false
+                },
+                styleObj:{
+                    fontSize: "100px",
+                    backgroundColor:"greenyellow"
+                }
+            },
+            methods: {
+                changeMode() {
+                    // this.mode = 'happy'
+                    const arr =['sad','normal','happy'];
+                   
+                    // 永远不可能变为1 
+                    this.mode = arr[Math.floor(Math.random()*3)];
+                },
+                changeMode2() {
+                    // this.mode = 'happy'
+                    
+                   
+                    // 永远不可能变为1 
+                    this.classObj.sad= true
+                },
+            },
+        })
+    </script>
+</body>
+
+</html>

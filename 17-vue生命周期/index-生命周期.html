@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2 :style="{opacity}">欢迎学习</h2>
+        <!-- {{change()}} 导致疯狂渲染界面 解析模版-->
+        <!-- 解析成真实DOM时候通知，然后开启定时器 -->
+    </div>
+    <script type="text/javascript">
+
+        Vue.config.productionTip = false
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                opacity: 1
+            },
+            methods: {
+                // change() {
+                //     setInterval(() => {
+                //         this.opacity -= 0.01;
+                //         if (this.opacity <= 0) {
+                //             this.opacity = 1
+                //         }
+                //     }, 16)
+                // }
+                
+
+            },
+            beforeCreate() {
+                console.log("创建前",this.opacity);
+            },
+            created() {
+                console.log("创建完成",this.opacity);
+            },
+            beforeMount() {
+                console.log("挂在前",this.opacity);
+            },
+            mounted() {
+                console.log("挂载完毕",this.opacity);
+                setInterval(() => {
+                        this.opacity -= 0.01;
+                        if (this.opacity <= 0) {
+                            this.opacity = 1
+                        }
+                    }, 16)
+            },
+            // beforeUpdate() {
+            //     console.log("更新前");
+            // }, 
+            // updated() {
+            //     console.log("更新完毕");
+            // },
+            destroyed() {
+                console.log("销毁",this.opacity);
+            },
+        })
+
+        // 通过外部定时器设置透明度，不推荐
+        // setInterval(() => {
+        //     vm.opacity -= 0.01;
+        //     if (vm.opacity <= 0) {
+        //         vm.opacity = 1
+        //     }
+        // }, 16)
+    </script>
+</body>
+
+</html>

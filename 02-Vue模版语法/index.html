@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<!-- 
+    1.指令语法用于解析标签 比如 v-bind
+    2.插值语法用于解析标签属性
+ -->
+<body>
+    <div id="root">
+        <h1>插值语法</h1>
+        <h3>你好,{{name}}</h3>
+        <hr />
+        <h1>指令语法</h1>
+        <a href="http://127.0.0.1:3000">点我去React</a>
+        <hr/>
+        <!-- vue.js:634 [Vue warn]: Error compiling template:
+
+        href="{{url}}": Interpolation inside attributes has been removed. Use v-bind or the colon shorthand instead. For example, instead of <div id="{{ val }}">, use <div :id="val">.
+
+        5  |          <h1>指令语法</h1>
+        6  |          <a href="http://127.0.0.1:3000">点我去React</a>
+        7  |          <a href="{{url}}">点我去React</a>
+        |             ^^^^^^^^^^^^^^
+        8  |      </div>
+
+        (found in <Root>) -->
+        <a href={{url}}>点我去React</a>
+        <hr/>
+        <!-- url这里当表达式去处理  把url绑定给href v-bind给任何标签绑定值 -->
+        <a v-bind:href="url">点我去React</a>
+        <hr/> 
+        <!-- v-bind可以简写成: -->
+        <a :href="school.url">点我去React2</a>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+        new Vue({
+            el: '#root',
+            data: {
+                name: "Eva",
+                url:"http://127.0.0.1:3000",
+                school:{
+                    name:"尚学堂",
+                    url:"http://www.baidu.com"
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>
