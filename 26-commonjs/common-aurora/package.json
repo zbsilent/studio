@@ -1,0 +1,15 @@
+{
+  "name": "aurora",
+  "version": "1.0.1",
+  "description": "nodejs study",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "zbsilent@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "math": "0.0.3"
+  }
+}
